@@ -17,8 +17,8 @@ from tendenci.core.categories.models import Category
 from tendenci.core.files.models import File
 from tagging.models import Tag, TaggedItem
 from tagging.utils import parse_tag_input
-from studygroups.models import StudyGroup, Officer, Position
-from studygroups.forms import StudyGroupForm, StudyGroupAdminForm, OfficerForm
+from addons.studygroups.models import StudyGroup, Officer, Position
+from addons.studygroups.forms import StudyGroupForm, StudyGroupAdminForm, OfficerForm
 from tendenci.core.perms.utils import update_perms_and_save, get_notice_recipients, has_perm, has_view_perm, get_query_filters
 from tendenci.core.perms.fields import has_groups_perms
 from tendenci.core.event_logs.models import EventLog
@@ -31,7 +31,7 @@ except:
 def detail(request, slug, template_name="studygroups/detail.html"):
     study_group = get_object_or_404(StudyGroup, slug=slug)
 
-    if has_perm(request.user, 'studygroup.view_studygroup', study_group):
+    if has_perm(request.user, 'studygroups.view_studygroup', study_group):
         EventLog.objects.log(instance=study_group)
         officers = study_group.officers()
 
@@ -81,7 +81,7 @@ def search(request, template_name="studygroups/search.html"):
 @login_required
 def add(request, form_class=StudyGroupForm, meta_form_class=MetaForm, category_form_class=CategoryForm, template_name="studygroups/add.html"):
 
-    if not has_perm(request.user,'studygroup.add_studygroup'):
+    if not has_perm(request.user,'studygroups.add_studygroup'):
         raise Http403
     
     content_type = get_object_or_404(ContentType, app_label='studygroups',model='studygroup')
@@ -166,7 +166,7 @@ def edit(request, id, form_class=StudyGroupForm, meta_form_class=MetaForm, categ
         
     study_group = get_object_or_404(StudyGroup, pk=id)
     
-    if not has_perm(request.user,'studygroup.change_studygroup',study_group):
+    if not has_perm(request.user,'studygroups.change_studygroup',study_group):
         raise Http403
         
     content_type = get_object_or_404(ContentType, app_label='studygroups',model='studygroup')
@@ -267,7 +267,7 @@ def edit_meta(request, id, form_class=MetaForm, template_name="studygroups/edit-
 
     # check permission
     study_group = get_object_or_404(StudyGroup, pk=id)
-    if not has_perm(request.user, 'studygroup.change_studygroup', study_group):
+    if not has_perm(request.user, 'studygroups.change_studygroup', study_group):
         raise Http403
 
     EventLog.objects.log(instance=study_group)
@@ -300,7 +300,7 @@ def edit_meta(request, id, form_class=MetaForm, template_name="studygroups/edit-
 def delete(request, id, template_name="studygroups/delete.html"):
     study_group = get_object_or_404(StudyGroup, pk=id)
 
-    if not has_perm(request.user, 'studygroup.delete_studygroup'):
+    if not has_perm(request.user, 'studygroups.delete_studygroup'):
         raise Http403
 
     if request.method == "POST":

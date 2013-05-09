@@ -6,9 +6,9 @@ from django.contrib.contenttypes import generic
 from tinymce import models as tinymce_models
 from tendenci.apps.pages.models import BasePage
 from tendenci.core.perms.object_perms import ObjectPermission
-from studygroups.managers import StudyGroupManager
-from studygroups.module_meta import StudyGroupMeta
-from tendenci.apps.user_groups.models import Group
+from addons.studygroups.managers import StudyGroupManager
+from addons.studygroups.module_meta import StudyGroupMeta
+from tendenci.apps.user_groups.models import Group, GroupMembership
 
 
 class StudyGroup(BasePage):
@@ -53,6 +53,7 @@ class StudyGroup(BasePage):
 
 class Position(models.Model):
     title = models.CharField(_(u'title'), max_length=200)
+    group = models.ForeignKey(Group, help_text='Group with associated permissions for this officer position.', null=True)
 
     def __unicode__(self):
         return unicode(self.title)
@@ -66,3 +67,23 @@ class Officer(models.Model):
 
     def __unicode__(self):
         return "%s" % self.pk
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_officer = Officer.objects.get(pk=self.pk)
+            if old_officer.position and old_officer.position.group and old_officer.user:
+                gm = GroupMembership.objects.filter(member=old_officer.user, group=old_officer.position.group)[:1]
+                if gm:
+                    gm[0].delete()
+
+        super(Officer, self).save(*args, **kwargs)
+        officer = self
+
+        if officer.position:
+            if officer.position.group and officer.user:
+                try:
+                    GroupMembership.objects.get(member=officer.user, group=officer.position.group)
+                except:
+                    GroupMembership.add_to_group(member=officer.user, group=officer.position.group)
+
+        return officer
