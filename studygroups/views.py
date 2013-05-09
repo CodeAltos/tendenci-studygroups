@@ -17,8 +17,8 @@ from tendenci.core.categories.models import Category
 from tendenci.core.files.models import File
 from tagging.models import Tag, TaggedItem
 from tagging.utils import parse_tag_input
-from addons.studygroups.models import StudyGroup, Officer, Position
-from addons.studygroups.forms import StudyGroupForm, StudyGroupAdminForm, OfficerForm
+from studygroups.models import StudyGroup, Officer, Position
+from studygroups.forms import StudyGroupForm, StudyGroupAdminForm, OfficerForm
 from tendenci.core.perms.utils import update_perms_and_save, get_notice_recipients, has_perm, has_view_perm, get_query_filters
 from tendenci.core.perms.fields import has_groups_perms
 from tendenci.core.event_logs.models import EventLog

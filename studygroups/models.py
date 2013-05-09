@@ -6,8 +6,8 @@ from django.contrib.contenttypes import generic
 from tinymce import models as tinymce_models
 from tendenci.apps.pages.models import BasePage
 from tendenci.core.perms.object_perms import ObjectPermission
-from addons.studygroups.managers import StudyGroupManager
-from addons.studygroups.module_meta import StudyGroupMeta
+from studygroups.managers import StudyGroupManager
+from studygroups.module_meta import StudyGroupMeta
 from tendenci.apps.user_groups.models import Group, GroupMembership
 
 
