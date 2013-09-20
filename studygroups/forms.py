@@ -39,7 +39,6 @@ class StudyGroupForm(TendenciBaseForm):
         'tags',
         'allow_anonymous_view',
         'syndicate',
-        'status',
         'status_detail',
         )
         fieldsets = [('Study Group Information', {
@@ -66,7 +65,6 @@ class StudyGroupForm(TendenciBaseForm):
                       }),
                      ('Administrator Only', {
                       'fields': ['syndicate',
-                                 'status',
                                  'status_detail'], 
                       'classes': ['admin-only'],
                     })]
@@ -120,7 +118,6 @@ class StudyGroupAdminForm(TendenciBaseForm):
         'tags',
         'allow_anonymous_view',
         'syndicate',
-        'status',
         'status_detail',
         )
         
