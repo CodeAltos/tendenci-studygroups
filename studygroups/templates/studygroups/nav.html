@@ -16,6 +16,7 @@
 {% endif %}
 
 
+{% if not SITE_GLOBAL_HIDEALLTABS %}
 <ul id="module-tabs" class="tabs">
     {% if user.is_authenticated and not SITE_GLOBAL_HIDETENDENCITABS %}
     <li class="dropdown" data-dropdown="dropdown">
@@ -75,3 +76,4 @@
     <li><a href="{% url files %}?group={{ nav_object.group_id }}">{% trans 'Files' %}</a></li>
     {% endif %}
 </ul>
+{% endif %}
