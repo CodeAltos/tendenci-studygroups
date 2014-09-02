@@ -23,11 +23,11 @@ msgstr ""
 
 #: templates/studygroups/add.html:20
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: templates/studygroups/add.html:28 templates/studygroups/edit.html:27
 msgid "Category"
-msgstr ""
+msgstr "Category"
 
 #: templates/studygroups/add.html:34 templates/studygroups/edit.html:33
 msgid "SEO Meta"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:25
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Confirm Delete"
 
 #: templates/studygroups/delete.html:28
 msgid "Back to study group"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:29
 msgid "Back to all"
-msgstr ""
+msgstr "Back to all"
 
 #: templates/studygroups/detail.html:10
 msgid "STUDY GROUP"
@@ -67,11 +67,11 @@ msgstr ""
 
 #: templates/studygroups/edit-meta.html:30
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 #: templates/studygroups/edit.html:19 templates/studygroups/options.html:15
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: templates/studygroups/edit.html:39
 msgid "Save Study Group Changes"
@@ -79,44 +79,44 @@ msgstr ""
 
 #: templates/studygroups/edit.html:42
 msgid "Link to delete confirmation page"
-msgstr ""
+msgstr "Link to delete confirmation page"
 
 #: templates/studygroups/edit.html:43 templates/studygroups/options.html:28
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: templates/studygroups/meta.html:17
 msgid "Category:"
-msgstr ""
+msgstr "Category:"
 
 #: templates/studygroups/meta.html:19
 msgid "Sub Category:"
-msgstr ""
+msgstr "Sub Category:"
 
 #: templates/studygroups/meta.html:85 templates/studygroups/nav.html:63
 #: templates/studygroups/options.html:24
 msgid "Edit Meta"
-msgstr ""
+msgstr "Edit Meta"
 
 #: templates/studygroups/meta.html:86 templates/studygroups/nav.html:64
 msgid "Edit Categories"
-msgstr ""
+msgstr "Edit Categories"
 
 #: templates/studygroups/nav.html:23
 msgid "Tendenci"
-msgstr ""
+msgstr "Tendenci"
 
 #: templates/studygroups/nav.html:25
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: templates/studygroups/nav.html:26
 msgid "My Profile"
-msgstr ""
+msgstr "My Profile"
 
 #: templates/studygroups/nav.html:27
 msgid "Log Off"
-msgstr ""
+msgstr "Log Off"
 
 #: templates/studygroups/nav.html:36
 msgid "All Study Groups"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: templates/studygroups/nav.html:43
 msgid "Settings"
-msgstr ""
+msgstr "Settings"
 
 #: templates/studygroups/nav.html:45
 msgid "Search Study Groups"
