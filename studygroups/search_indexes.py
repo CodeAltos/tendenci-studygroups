@@ -1,8 +1,7 @@
 from haystack import indexes
-from haystack import site
 
-from tendenci.core.perms.indexes import TendenciBaseSearchIndex
-from tendenci.core.categories.models import Category
+from tendenci.apps.perms.indexes import TendenciBaseSearchIndex
+from tendenci.apps.categories.models import Category
 from studygroups.models import StudyGroup
 
 class StudyGroupIndex(TendenciBaseSearchIndex):
@@ -16,6 +15,9 @@ class StudyGroupIndex(TendenciBaseSearchIndex):
     # RSS fields
     can_syndicate = indexes.BooleanField()
     order = indexes.DateTimeField()
+
+    def get_model(self):
+        return StudyGroup
 
     def prepare_category(self, obj):
         category = Category.objects.get_for_object(obj, 'category')
@@ -35,5 +37,3 @@ class StudyGroupIndex(TendenciBaseSearchIndex):
 
     def prepare_order(self, obj):
         return obj.update_dt
-
-site.register(StudyGroup, StudyGroupIndex)

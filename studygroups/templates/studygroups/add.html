@@ -20,7 +20,7 @@
     <h1>{% firstof MODULE_STUDYGROUPS_LABEL trans 'Study Group' %} {% trans "Add" %}</h1>
 
     <div class="studygroup-wrap">
-    	<form action="{% url studygroups.add %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    	<form action="{% url "studygroups.add" %}" method="post" enctype="multipart/form-data">{% csrf_token %}
     	<div class="forms">			
     	    {% studygroup_form form %}
 			

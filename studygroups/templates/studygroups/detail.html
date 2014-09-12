@@ -60,11 +60,11 @@
         {% endif %}
         
         <div class="studygroup-files">
-            Files {% if admin %}<a href="{% url file.add %}">Add a File</a>{% endif %}
+            Files {% if admin %}<a href="{% url "file.add" %}">Add a File</a>{% endif %}
             <ul class="file-list">
             {% for file in files %}
                 <li class="file-list">
-                    <a href="{% url file file.pk %}">{{ file.get_name }}</a>
+                    <a href="{% url "file" file.pk %}">{{ file.get_name }}</a>
                 </li>
             {% endfor %}
             </ul>

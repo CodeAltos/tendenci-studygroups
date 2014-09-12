@@ -8,20 +8,20 @@ from django.contrib import messages
 from django.utils.functional import curry
 from django.contrib.contenttypes.models import ContentType
 
-from tendenci.core.base.http import Http403
-from tendenci.core.event_logs.models import EventLog
-from tendenci.core.meta.models import Meta as MetaTags
-from tendenci.core.meta.forms import MetaForm
-from tendenci.core.categories.forms import CategoryForm
-from tendenci.core.categories.models import Category
-from tendenci.core.files.models import File
+from tendenci.apps.base.http import Http403
+from tendenci.apps.event_logs.models import EventLog
+from tendenci.apps.meta.models import Meta as MetaTags
+from tendenci.apps.meta.forms import MetaForm
+from tendenci.apps.categories.forms import CategoryForm
+from tendenci.apps.categories.models import Category
+from tendenci.apps.files.models import File
 from tagging.models import Tag, TaggedItem
 from tagging.utils import parse_tag_input
 from studygroups.models import StudyGroup, Officer, Position
 from studygroups.forms import StudyGroupForm, StudyGroupAdminForm, OfficerForm
-from tendenci.core.perms.utils import update_perms_and_save, get_notice_recipients, has_perm, has_view_perm, get_query_filters
-from tendenci.core.perms.fields import has_groups_perms
-from tendenci.core.event_logs.models import EventLog
+from tendenci.apps.perms.utils import update_perms_and_save, get_notice_recipients, has_perm, has_view_perm, get_query_filters
+from tendenci.apps.perms.fields import has_groups_perms
+from tendenci.apps.event_logs.models import EventLog
 
 try:
     from tendenci.apps.notifications import models as notification

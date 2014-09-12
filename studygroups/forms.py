@@ -2,10 +2,10 @@ from django import forms
 
 from studygroups.models import StudyGroup, Officer
 from tendenci.apps.user_groups.models import GroupMembership, Group
-from tendenci.core.perms.forms import TendenciBaseForm
+from tendenci.apps.perms.forms import TendenciBaseForm
 from tinymce.widgets import TinyMCE
-from tendenci.core.base.fields import SplitDateTimeField
-from tendenci.core.base.utils import get_template_list
+from tendenci.apps.base.fields import SplitDateTimeField
+from tendenci.apps.base.utils import get_template_list
 
 template_choices = [('default.html','Default')]
 template_choices += get_template_list()

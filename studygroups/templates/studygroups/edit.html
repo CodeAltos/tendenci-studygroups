@@ -19,7 +19,7 @@
     <h1>{% firstof MODULE_STUDYGROUPS_LABEL 'Study Group' %} {% trans "Edit" %}</h1>
 
     <div class="studygroup-wrap">
-        <form action="{% url studygroups.edit study_group.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <form action="{% url "studygroups.edit" study_group.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
     	<div class="forms">
             {% studygroup_form form formset %}
 			
@@ -39,7 +39,7 @@
             <input type="submit" value="{% trans 'Save Study Group Changes' %}" />
             {% if study_group.status %}
         	<div class="form-delete-link">
-        	    <a class="delete" title="{% trans 'Link to delete confirmation page' %}" href="{% url studygroups.delete study_group.pk %}">
+        	    <a class="delete" title="{% trans 'Link to delete confirmation page' %}" href="{% url "studygroups.delete" study_group.pk %}">
         	        {% trans "Delete" %}
         	    </a>
         	</div>

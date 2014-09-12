@@ -4,8 +4,8 @@ from django.conf import settings
 from django import forms
 from django.core.urlresolvers import reverse
 
-from tendenci.core.perms.admin import TendenciBaseModelAdmin
-from tendenci.core.perms.utils import update_perms_and_save
+from tendenci.apps.perms.admin import TendenciBaseModelAdmin
+from tendenci.apps.perms.utils import update_perms_and_save
 from tendenci.apps.user_groups.models import GroupMembership
 from studygroups.models import StudyGroup, Position, Officer
 from studygroups.forms import StudyGroupAdminForm, StudyGroupAdminChangelistForm
