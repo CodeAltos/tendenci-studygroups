@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Tendenci\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-22 20:21+0000\n"
-"PO-Revision-Date: 2014-09-15 07:00+0000\n"
+"PO-Revision-Date: 2014-10-02 09:02+0000\n"
 "Last-Translator: Ed Schipul <eschipul@tendenci.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/tendenci/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: models.py:55
 msgid "title"
-msgstr ""
+msgstr "Название"
 
 #: templates/studygroups/add.html:20
 msgid "Add"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: templates/studygroups/add.html:34 templates/studygroups/edit.html:33
 msgid "SEO Meta"
-msgstr ""
+msgstr "SEO Мета"
 
 #: templates/studygroups/delete.html:5 templates/studygroups/nav.html:68
 msgid "Delete Study Group"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:29
 msgid "Back to all"
-msgstr ""
+msgstr "Вернуться к все"
 
 #: templates/studygroups/detail.html:10
 msgid "STUDY GROUP"
@@ -63,7 +63,7 @@ msgstr ""
 
 #: templates/studygroups/edit-meta.html:16
 msgid "Meta Information for"
-msgstr ""
+msgstr "Мета Информация для"
 
 #: templates/studygroups/edit-meta.html:30
 msgid "Cancel"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: templates/studygroups/edit.html:42
 msgid "Link to delete confirmation page"
-msgstr ""
+msgstr "Ссылка удалить страницу подтверждения"
 
 #: templates/studygroups/edit.html:43 templates/studygroups/options.html:28
 msgid "Delete"
@@ -87,20 +87,20 @@ msgstr ""
 
 #: templates/studygroups/meta.html:17
 msgid "Category:"
-msgstr ""
+msgstr "Категория:"
 
 #: templates/studygroups/meta.html:19
 msgid "Sub Category:"
-msgstr ""
+msgstr "Подкатегория:"
 
 #: templates/studygroups/meta.html:85 templates/studygroups/nav.html:63
 #: templates/studygroups/options.html:24
 msgid "Edit Meta"
-msgstr ""
+msgstr "Редактировать Мета"
 
 #: templates/studygroups/meta.html:86 templates/studygroups/nav.html:64
 msgid "Edit Categories"
-msgstr ""
+msgstr "Изменение категорий"
 
 #: templates/studygroups/nav.html:23
 msgid "Tendenci"
@@ -152,11 +152,11 @@ msgstr ""
 
 #: templates/studygroups/nav.html:76
 msgid "Files"
-msgstr ""
+msgstr "Файлы"
 
 #: templates/studygroups/options.html:20
 msgid "More options"
-msgstr ""
+msgstr "Дополнительные параметры"
 
 #: templates/studygroups/search.html:10
 msgid "StudyGroups"

@@ -3,36 +3,35 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jenny Qian <jqian@tendenci.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Tendenci\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-22 20:21+0000\n"
-"PO-Revision-Date: 2014-10-02 09:41+0000\n"
-"Last-Translator: Jenny Qian <jqian@tendenci.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/tendenci/language/zh_CN/)\n"
+"PO-Revision-Date: 2014-10-02 23:39+0000\n"
+"Last-Translator: bleven <bleven@tendenci.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/tendenci/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: models.py:55
 msgid "title"
-msgstr "标题"
+msgstr ""
 
 #: templates/studygroups/add.html:20
 msgid "Add"
-msgstr "增添"
+msgstr ""
 
 #: templates/studygroups/add.html:28 templates/studygroups/edit.html:27
 msgid "Category"
-msgstr "分类"
+msgstr ""
 
 #: templates/studygroups/add.html:34 templates/studygroups/edit.html:33
 msgid "SEO Meta"
-msgstr "元搜索引擎优化"
+msgstr ""
 
 #: templates/studygroups/delete.html:5 templates/studygroups/nav.html:68
 msgid "Delete Study Group"
@@ -48,7 +47,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:25
 msgid "Confirm Delete"
-msgstr "确认删除"
+msgstr ""
 
 #: templates/studygroups/delete.html:28
 msgid "Back to study group"
@@ -56,7 +55,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:29
 msgid "Back to all"
-msgstr "全部返回"
+msgstr ""
 
 #: templates/studygroups/detail.html:10
 msgid "STUDY GROUP"
@@ -64,15 +63,15 @@ msgstr ""
 
 #: templates/studygroups/edit-meta.html:16
 msgid "Meta Information for"
-msgstr "对于元信息"
+msgstr ""
 
 #: templates/studygroups/edit-meta.html:30
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: templates/studygroups/edit.html:19 templates/studygroups/options.html:15
 msgid "Edit"
-msgstr "编辑"
+msgstr ""
 
 #: templates/studygroups/edit.html:39
 msgid "Save Study Group Changes"
@@ -80,44 +79,44 @@ msgstr ""
 
 #: templates/studygroups/edit.html:42
 msgid "Link to delete confirmation page"
-msgstr "链接到删除确认页面"
+msgstr ""
 
 #: templates/studygroups/edit.html:43 templates/studygroups/options.html:28
 msgid "Delete"
-msgstr "删除"
+msgstr ""
 
 #: templates/studygroups/meta.html:17
 msgid "Category:"
-msgstr "类别"
+msgstr ""
 
 #: templates/studygroups/meta.html:19
 msgid "Sub Category:"
-msgstr "子类别"
+msgstr ""
 
 #: templates/studygroups/meta.html:85 templates/studygroups/nav.html:63
 #: templates/studygroups/options.html:24
 msgid "Edit Meta"
-msgstr "编辑Meta信息"
+msgstr ""
 
 #: templates/studygroups/meta.html:86 templates/studygroups/nav.html:64
 msgid "Edit Categories"
-msgstr "编辑类别"
+msgstr ""
 
 #: templates/studygroups/nav.html:23
 msgid "Tendenci"
-msgstr "Tendenci"
+msgstr ""
 
 #: templates/studygroups/nav.html:25
 msgid "Dashboard"
-msgstr "操控页"
+msgstr ""
 
 #: templates/studygroups/nav.html:26
 msgid "My Profile"
-msgstr "我的个人资料"
+msgstr ""
 
 #: templates/studygroups/nav.html:27
 msgid "Log Off"
-msgstr "注销"
+msgstr ""
 
 #: templates/studygroups/nav.html:36
 msgid "All Study Groups"
@@ -125,7 +124,7 @@ msgstr ""
 
 #: templates/studygroups/nav.html:43
 msgid "Settings"
-msgstr "设置"
+msgstr ""
 
 #: templates/studygroups/nav.html:45
 msgid "Search Study Groups"
@@ -137,7 +136,7 @@ msgstr ""
 
 #: templates/studygroups/nav.html:50
 msgid "Add Position"
-msgstr "新增职位"
+msgstr ""
 
 #: templates/studygroups/nav.html:56
 msgid "This Study Group"
@@ -153,11 +152,11 @@ msgstr ""
 
 #: templates/studygroups/nav.html:76
 msgid "Files"
-msgstr "文件"
+msgstr ""
 
 #: templates/studygroups/options.html:20
 msgid "More options"
-msgstr "更多选择"
+msgstr ""
 
 #: templates/studygroups/search.html:10
 msgid "StudyGroups"
