@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Tendenci\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-22 20:21+0000\n"
-"PO-Revision-Date: 2014-10-02 23:39+0000\n"
+"PO-Revision-Date: 2014-10-04 12:21+0000\n"
 "Last-Translator: bleven <bleven@tendenci.com>\n"
 "Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/tendenci/language/de_CH/)\n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,19 @@ msgstr ""
 
 #: models.py:55
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: templates/studygroups/add.html:20
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: templates/studygroups/add.html:28 templates/studygroups/edit.html:27
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: templates/studygroups/add.html:34 templates/studygroups/edit.html:33
 msgid "SEO Meta"
-msgstr ""
+msgstr "SEO Meta"
 
 #: templates/studygroups/delete.html:5 templates/studygroups/nav.html:68
 msgid "Delete Study Group"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:25
 msgid "Confirm Delete"
-msgstr ""
+msgstr "Löschen bestätigen"
 
 #: templates/studygroups/delete.html:28
 msgid "Back to study group"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: templates/studygroups/delete.html:29
 msgid "Back to all"
-msgstr ""
+msgstr "Zurück zu allen"
 
 #: templates/studygroups/detail.html:10
 msgid "STUDY GROUP"
@@ -63,15 +63,15 @@ msgstr ""
 
 #: templates/studygroups/edit-meta.html:16
 msgid "Meta Information for"
-msgstr ""
+msgstr "Meta-Informationen für"
 
 #: templates/studygroups/edit-meta.html:30
 msgid "Cancel"
-msgstr ""
+msgstr "Stornieren"
 
 #: templates/studygroups/edit.html:19 templates/studygroups/options.html:15
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: templates/studygroups/edit.html:39
 msgid "Save Study Group Changes"
@@ -79,44 +79,44 @@ msgstr ""
 
 #: templates/studygroups/edit.html:42
 msgid "Link to delete confirmation page"
-msgstr ""
+msgstr "Link zur Bestätigungsseite löschen"
 
 #: templates/studygroups/edit.html:43 templates/studygroups/options.html:28
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: templates/studygroups/meta.html:17
 msgid "Category:"
-msgstr ""
+msgstr "Kategorie:"
 
 #: templates/studygroups/meta.html:19
 msgid "Sub Category:"
-msgstr ""
+msgstr "Unterkategorie:"
 
 #: templates/studygroups/meta.html:85 templates/studygroups/nav.html:63
 #: templates/studygroups/options.html:24
 msgid "Edit Meta"
-msgstr ""
+msgstr "Ändern Meta"
 
 #: templates/studygroups/meta.html:86 templates/studygroups/nav.html:64
 msgid "Edit Categories"
-msgstr ""
+msgstr "Kategorien bearbeiten"
 
 #: templates/studygroups/nav.html:23
 msgid "Tendenci"
-msgstr ""
+msgstr "Die Tendenz"
 
 #: templates/studygroups/nav.html:25
 msgid "Dashboard"
-msgstr ""
+msgstr "Armaturenbrett"
 
 #: templates/studygroups/nav.html:26
 msgid "My Profile"
-msgstr ""
+msgstr "Mein Profil"
 
 #: templates/studygroups/nav.html:27
 msgid "Log Off"
-msgstr ""
+msgstr "Abmelden"
 
 #: templates/studygroups/nav.html:36
 msgid "All Study Groups"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: templates/studygroups/nav.html:43
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: templates/studygroups/nav.html:45
 msgid "Search Study Groups"
@@ -152,11 +152,11 @@ msgstr ""
 
 #: templates/studygroups/nav.html:76
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #: templates/studygroups/options.html:20
 msgid "More options"
-msgstr ""
+msgstr "Mehr Optionen"
 
 #: templates/studygroups/search.html:10
 msgid "StudyGroups"
