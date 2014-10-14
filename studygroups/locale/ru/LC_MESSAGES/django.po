@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Tendenci\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-22 20:21+0000\n"
-"PO-Revision-Date: 2014-10-02 09:02+0000\n"
+"PO-Revision-Date: 2014-10-13 20:01+0000\n"
 "Last-Translator: Ed Schipul <eschipul@tendenci.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/tendenci/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "Изменение категорий"
 
 #: templates/studygroups/nav.html:23
 msgid "Tendenci"
-msgstr ""
+msgstr "Тенденция"
 
 #: templates/studygroups/nav.html:25
 msgid "Dashboard"
