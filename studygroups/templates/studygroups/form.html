@@ -48,26 +48,26 @@ There were some problems in the form. Please review. Thanks!
 		    {% if not fieldset.legend and field.auto_id == 'id_notes' and formset %}
 		        {% studygroup_officer_formset formset %}
 		    {% endif %}
-		    
+
 		    <div class="form-field">
 		        <div class="{{ field.auto_id }}">
 		        	{% if field|is_checkbox %}
-		            	<div class="checkbox">
-		               		{% if field.errors %}         
+		            	<div class="checkbox-input">
+		               		{% if field.errors %}
 		                    <div class="error">
 		                        {% for error in field.errors %}
 		                        <p>{{ error }}</p>
 		                        {% endfor %}
 		                    </div>
-		                    {% endif %}  
+		                    {% endif %}
 		                    <div class="field">
 		                        {{ field }}
-		                    </div> 
+		                    </div>
 		                    <div class="label{% if field.field.required %} required{% endif %}">
 		                        {{ field.label_tag }}
-		                    </div> 
+		                    </div>
 		                    {% if field.help_text %}
-		                    <div class="help-text">{{ field.help_text|safe }}</div>   
+		                    <div class="help-text">{{ field.help_text|safe }}</div>
 		                    {% endif %}
 		                </div>
 		                <div style="clear: both"><!-- IE7 --></div>
@@ -92,7 +92,7 @@ There were some problems in the form. Please review. Thanks!
 		         </div>
 		    </div>
 		{% endif %}
-		{% endfor %}   	
+		{% endfor %}
 	  </fieldset>
 	  {% endif %}
 	{% endfor %}
@@ -104,22 +104,22 @@ There were some problems in the form. Please review. Thanks!
 	    <div class="form-field">
 	        <div class="{{ field.auto_id }}{{ field.field.css_classes }}">
 	        	{% if field|is_checkbox %}
-	            	<div class="checkbox">
-	               		{% if field.errors %}         
+	            	<div class="checkbox-input">
+	               		{% if field.errors %}
 	                    <div class="error">
 	                        {% for error in field.errors %}
 	                        <p>{{ error }}</p>
 	                        {% endfor %}
 	                    </div>
-	                    {% endif %}  
+	                    {% endif %}
 	                    <div class="field">
 	                        {{ field }}
-	                    </div> 
+	                    </div>
 	                    <div class="label{% if field.field.required %} required{% endif %}">
 	                        {{ field.label_tag }}
-	                    </div> 
+	                    </div>
 	                    {% if field.help_text %}
-	                    <div class="help-text">{{ field.help_text|safe }}</div>   
+	                    <div class="help-text">{{ field.help_text|safe }}</div>
 	                    {% endif %}
 	                </div>
 	                <div style="clear: both"><!-- IE7 --></div>
@@ -149,8 +149,8 @@ There were some problems in the form. Please review. Thanks!
                         {% endif %}
                     {% endif %}
 	            {% endif %}
-	         </div>       
+	         </div>
 	    </div>
 	{% endif %}
-	{% endfor %}   
+	{% endfor %}
 {% endif %}

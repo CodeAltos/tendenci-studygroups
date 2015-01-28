@@ -18,6 +18,16 @@ def studygroup_nav(context, user, study_group=None):
     })
     return context
 
+
+@register.inclusion_tag("studygroups/top_nav_items.html", takes_context=True)
+def studygroup_current_app(context, user, study_group=None):
+    context.update({
+        'app_object': study_group,
+        "user": user
+    })
+    return context
+
+
 @register.tag
 def list_studygroups(parser, token):
     """

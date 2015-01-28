@@ -4,7 +4,7 @@
 {% load styled_forms %}
 {% load i18n %}
 
-{% block title %}{% firstof MODULE_STUDYGROUPS_LABEL 'Study Group' %} Edit{% endblock %}
+{% block title %}{% firstof MODULE_STUDYGROUPS_LABEL 'Study Group' %} {% trans 'Edit' %}{% endblock %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -15,14 +15,13 @@
 {% block body %}
 
 <div class="t">
-    {% studygroup_nav request.user study_group %}
     <h1>{% firstof MODULE_STUDYGROUPS_LABEL 'Study Group' %} {% trans "Edit" %}</h1>
 
     <div class="studygroup-wrap">
         <form action="{% url "studygroups.edit" study_group.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
     	<div class="forms">
             {% studygroup_form form formset %}
-			
+
 			<fieldset class="boxy-grey" >
                 <legend id="category-title" style="cursor: pointer"><span>+</span> {% trans "Category" %}</legend>
                 <div id="category-form">
@@ -35,7 +34,7 @@
                     {{ metaform|styled_form }}
                 </div>
             </fieldset>
-            
+
             <input type="submit" value="{% trans 'Save Study Group Changes' %}" />
             {% if study_group.status %}
         	<div class="form-delete-link">
@@ -64,7 +63,7 @@
 				var category = prompt('Category Name?','').toLowerCase();
 				category = category.replace('"','')
 				var option_html = '<option selected="selected" value="' + category + '">' + category + '</option>';
-				if (category) select_box.append(option_html) 
+				if (category) select_box.append(option_html)
 				return false;
 			});
 			$('.add-sub-category').click(function(){
@@ -72,7 +71,7 @@
 				var sub_category = prompt('Category Name?','').toLowerCase();
 				sub_category = sub_category.replace('"','')
 				var option_html = '<option selected="selected" value="' + sub_category + '">' + sub_category + '</option>';
-				if (sub_category) select_box.append(option_html) 
+				if (sub_category) select_box.append(option_html)
 				return false;
 			});
 		});

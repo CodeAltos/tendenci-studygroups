@@ -3,7 +3,7 @@
 {% load styled_forms %}
 {% load i18n %}
 
-{% block title %}{% firstof MODULE_STUDYGROUP_LABEL 'Study Group' %} Edit Meta Information{% endblock %}
+{% block title %}{% firstof MODULE_STUDYGROUP_LABEL 'Study Group' %} {% trans 'Edit Meta Information' %}{% endblock %}
 
 {% block extra_head %}
 {{ block.super }}
@@ -12,7 +12,6 @@
 
 {% block body %}
 <div class="t">
-    {% studygroup_nav request.user study_group %}
     <h1>{% firstof MODULE_STUDYGROUPS_LABEL 'STUDY GROUP' %} {% trans "Meta Information for" %}<br />
     {{ study_group.title }}</h1>
 

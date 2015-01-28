@@ -10,7 +10,7 @@
 	{% if can_edit %}
 	<span>{{ opt_object.status_detail|capfirst }}</span>
 	{% endif %}
-		
+
 	{% if can_edit %}
 		<a class="option-link edit" href="{% url "studygroups.edit" opt_object.pk %}">{% trans "Edit" %}</a>
 	{% endif %}
@@ -26,7 +26,7 @@
 				{% if can_delete %}
                 <li>
                     <a class="option-link delete" href="{% url "studygroups.delete" opt_object.pk %}">{% trans "Delete" %}</a>
-                </li>				
+                </li>
 				{% endif %}
 			 </ul>
 	        </div>
