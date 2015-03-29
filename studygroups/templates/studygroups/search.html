@@ -10,7 +10,7 @@
     <link rel="alternate" type="application/rss+xml" title="{% trans 'StudyGroups' %}" href="{% url 'studygroups.feed' %}" />
 {% endblock %}
 
-{% block body %}
+{% block content %}
 {% autopaginate studygroups 10 %}
 <div class="t">
     <h1>{% trans 'Study Group List' %}</h1>
@@ -26,4 +26,4 @@
     </div>
     {% paginate %}
 </div>
-{% endblock body %}
+{% endblock %}

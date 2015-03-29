@@ -4,6 +4,8 @@
 .DS_Store
 studygroups/.DS_Store
 
+.*
+
 # except for .gitignore
 !.gitignore
 # except for .tx
