@@ -16,6 +16,7 @@ class StudyGroupIndex(TendenciBaseSearchIndex):
     can_syndicate = indexes.BooleanField()
     order = indexes.DateTimeField()
 
+    @classmethod
     def get_model(self):
         return StudyGroup
 
