@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericRelation
 
 from tinymce import models as tinymce_models
 from tendenci.apps.pages.models import BasePage
@@ -23,7 +23,7 @@ class StudyGroup(BasePage):
     join_link = models.CharField(max_length=200, null=True, blank=True)
     group = models.ForeignKey(Group)
 
-    perms = generic.GenericRelation(ObjectPermission,
+    perms = GenericRelation(ObjectPermission,
                                           object_id_field="object_id",
                                           content_type_field="content_type")
 
