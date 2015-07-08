@@ -34,6 +34,7 @@ class StudyGroup(BasePage):
 
     class Meta:
         permissions = (("view_studygroup", "Can view studygroup"),)
+        app_label = 'studygroups'
 
     @models.permalink
     def get_absolute_url(self):
@@ -55,6 +56,9 @@ class Position(models.Model):
     title = models.CharField(_(u'title'), max_length=200)
     group = models.ForeignKey(Group, help_text='Group with associated permissions for this officer position.', null=True)
 
+    class Meta:
+        app_label = 'studygroups'
+
     def __unicode__(self):
         return unicode(self.title)
 
@@ -64,6 +68,9 @@ class Officer(models.Model):
     user = models.ForeignKey(User)
     position = models.ForeignKey(Position)
     phone = models.CharField(max_length=50, null=True, blank=True)
+
+    class Meta:
+        app_label = 'studygroups'
 
     def __unicode__(self):
         return "%s" % self.pk
