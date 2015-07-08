@@ -12,7 +12,7 @@ setup(
     name='tendenci-studygroups',
     author='Schipul',
     author_email='programmers@schipul.com',
-    version='6.0.2',
+    version='7.0.0',
     license='GPL3',
     description='Studygroups addon for Tendenci',
     long_description=longdesc,
@@ -30,5 +30,5 @@ setup(
     ],
     include_package_data=True,
     packages=find_packages(),
-    install_requires=['tendenci>=6.0.0,<7.0'],
+    install_requires=['tendenci>=7.0.0,<8.0'],
 )
