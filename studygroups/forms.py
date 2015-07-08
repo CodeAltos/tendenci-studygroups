@@ -14,15 +14,15 @@ class StudyGroupForm(TendenciBaseForm):
     mission = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
     content = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
     notes = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
         
     class Meta:
         model = StudyGroup
@@ -87,15 +87,15 @@ class StudyGroupAdminForm(TendenciBaseForm):
     mission = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
     content = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
     notes = forms.CharField(required=False,
         widget=TinyMCE(attrs={'style':'width:100%'}, 
         mce_attrs={'storme_app_label':StudyGroup._meta.app_label, 
-        'storme_model':StudyGroup._meta.module_name.lower()}))
+        'storme_model':StudyGroup._meta.model_name.lower()}))
 
     group = forms.ModelChoiceField(required=False, queryset=Group.objects.filter(status=True, status_detail="active").order_by('name'))
 
