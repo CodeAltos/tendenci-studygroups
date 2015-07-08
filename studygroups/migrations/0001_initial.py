@@ -1,300 +1,93 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'StudyGroup'
-        db.create_table('studygroups_studygroup', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('allow_anonymous_view', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('allow_user_view', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('allow_member_view', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('allow_user_edit', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('allow_member_edit', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('entity', self.gf('django.db.models.fields.related.ForeignKey')(default=None, related_name='studygroups_studygroup_entity', null=True, blank=True, to=orm['entities.Entity'])),
-            ('create_dt', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('update_dt', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('creator', self.gf('django.db.models.fields.related.ForeignKey')(default=None, related_name='studygroups_studygroup_creator', null=True, to=orm['auth.User'])),
-            ('creator_username', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(default=None, related_name='studygroups_studygroup_owner', null=True, to=orm['auth.User'])),
-            ('owner_username', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('status', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('status_detail', self.gf('django.db.models.fields.CharField')(default='active', max_length=50)),
-            ('guid', self.gf('django.db.models.fields.CharField')(max_length=40)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
-            ('slug', self.gf('tendenci.apps.base.fields.SlugField')(max_length=100, db_index=True)),
-            ('header_image', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['pages.HeaderImage'], null=True)),
-            ('content', self.gf('tinymce.models.HTMLField')()),
-            ('view_contact_form', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('design_notes', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('syndicate', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('template', self.gf('django.db.models.fields.CharField')(max_length=50, blank=True)),
-            ('tags', self.gf('tagging.fields.TagField')()),
-            ('meta', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['meta.Meta'], unique=True, null=True)),
-            ('mission', self.gf('tinymce.models.HTMLField')(null=True, blank=True)),
-            ('notes', self.gf('tinymce.models.HTMLField')(null=True, blank=True)),
-            ('contact_name', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('contact_email', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('join_link', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
-            ('group', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['user_groups.Group'])),
-        ))
-        db.send_create_signal('studygroups', ['StudyGroup'])
-
-        # Adding model 'Position'
-        db.create_table('studygroups_position', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-        ))
-        db.send_create_signal('studygroups', ['Position'])
-
-        # Adding model 'Officer'
-        db.create_table('studygroups_officer', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('study_group', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['studygroups.StudyGroup'])),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('position', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['studygroups.Position'])),
-            ('phone', self.gf('django.db.models.fields.CharField')(max_length=50, null=True, blank=True)),
-        ))
-        db.send_create_signal('studygroups', ['Officer'])
+from django.db import models, migrations
+import tendenci.apps.base.fields
+import django.db.models.deletion
+import tinymce.models
+from django.conf import settings
+import tagging.fields
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'StudyGroup'
-        db.delete_table('studygroups_studygroup')
+class Migration(migrations.Migration):
 
-        # Deleting model 'Position'
-        db.delete_table('studygroups_position')
+    dependencies = [
+        ('user_groups', '0001_initial'),
+        ('pages', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('meta', '0001_initial'),
+        ('entities', '0001_initial'),
+    ]
 
-        # Deleting model 'Officer'
-        db.delete_table('studygroups_officer')
-
-
-    models = {
-        'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        'auth.permission': {
-            'Meta': {'ordering': "('content_type__app_label', 'content_type__model', 'codename')", 'unique_together': "(('content_type', 'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 20, 17, 1, 57, 883510)'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 20, 17, 1, 57, 883370)'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        'categories.category': {
-            'Meta': {'object_name': 'Category'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255', 'db_index': 'True'})
-        },
-        'categories.categoryitem': {
-            'Meta': {'object_name': 'CategoryItem'},
-            'category': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'categoryitem_category'", 'null': 'True', 'to': "orm['categories.Category']"}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'categoryitem_parent'", 'null': 'True', 'to': "orm['categories.Category']"})
-        },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        'entities.entity': {
-            'Meta': {'object_name': 'Entity'},
-            'admin_notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'allow_anonymous_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_anonymous_view': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_member_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_member_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'contact_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creator': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'entity_creator'", 'to': "orm['auth.User']"}),
-            'creator_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'email': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),
-            'entity_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'entity_parent_id': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'entity_type': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'fax': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'guid': ('django.db.models.fields.CharField', [], {'max_length': '40'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'entity_owner'", 'to': "orm['auth.User']"}),
-            'owner_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'phone': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'status': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'status_detail': ('django.db.models.fields.CharField', [], {'default': "'active'", 'max_length': '50'}),
-            'summary': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'website': ('django.db.models.fields.CharField', [], {'max_length': '300', 'blank': 'True'})
-        },
-        'files.file': {
-            'Meta': {'object_name': 'File'},
-            'allow_anonymous_view': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_member_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_member_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']", 'null': 'True', 'blank': 'True'}),
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creator': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'files_file_creator'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'creator_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'entity': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'files_file_entity'", 'null': 'True', 'blank': 'True', 'to': "orm['entities.Entity']"}),
-            'file': ('django.db.models.fields.files.FileField', [], {'max_length': '260'}),
-            'group': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'to': "orm['auth.Group']", 'null': 'True'}),
-            'guid': ('django.db.models.fields.CharField', [], {'max_length': '40'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_public': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'object_id': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'files_file_owner'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'owner_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'status': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'status_detail': ('django.db.models.fields.CharField', [], {'default': "'active'", 'max_length': '50'}),
-            'tags': ('tagging.fields.TagField', [], {'null': 'True'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        'meta.meta': {
-            'Meta': {'object_name': 'Meta'},
-            'canonical_url': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'keywords': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        'pages.headerimage': {
-            'Meta': {'object_name': 'HeaderImage', '_ormbases': ['files.File']},
-            'file_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['files.File']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        'studygroups.officer': {
-            'Meta': {'object_name': 'Officer'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'phone': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'}),
-            'position': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['studygroups.Position']"}),
-            'study_group': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['studygroups.StudyGroup']"}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
-        },
-        'studygroups.position': {
-            'Meta': {'object_name': 'Position'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        'studygroups.studygroup': {
-            'Meta': {'object_name': 'StudyGroup'},
-            'allow_anonymous_view': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_member_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_member_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'contact_email': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'contact_name': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'content': ('tinymce.models.HTMLField', [], {}),
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creator': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'studygroups_studygroup_creator'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'creator_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'design_notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'entity': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'studygroups_studygroup_entity'", 'null': 'True', 'blank': 'True', 'to': "orm['entities.Entity']"}),
-            'group': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['user_groups.Group']"}),
-            'guid': ('django.db.models.fields.CharField', [], {'max_length': '40'}),
-            'header_image': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['pages.HeaderImage']", 'null': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'join_link': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
-            'meta': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['meta.Meta']", 'unique': 'True', 'null': 'True'}),
-            'mission': ('tinymce.models.HTMLField', [], {'null': 'True', 'blank': 'True'}),
-            'notes': ('tinymce.models.HTMLField', [], {'null': 'True', 'blank': 'True'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'studygroups_studygroup_owner'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'owner_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'slug': ('tendenci.apps.base.fields.SlugField', [], {'max_length': '100', 'db_index': 'True'}),
-            'status': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'status_detail': ('django.db.models.fields.CharField', [], {'default': "'active'", 'max_length': '50'}),
-            'syndicate': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'tags': ('tagging.fields.TagField', [], {}),
-            'template': ('django.db.models.fields.CharField', [], {'max_length': '50', 'blank': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'view_contact_form': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
-        },
-        'user_groups.group': {
-            'Meta': {'object_name': 'Group'},
-            'allow_anonymous_view': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_member_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_member_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_self_add': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_self_remove': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'allow_user_edit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'allow_user_view': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'auto_respond': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'auto_respond_priority': ('django.db.models.fields.FloatField', [], {'default': '0', 'blank': 'True'}),
-            'auto_respond_template': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creator': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'user_groups_group_creator'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'creator_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'email_recipient': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'entity': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'user_groups_group_entity'", 'null': 'True', 'blank': 'True', 'to': "orm['entities.Entity']"}),
-            'group': ('django.db.models.fields.related.OneToOneField', [], {'default': 'None', 'to': "orm['auth.Group']", 'unique': 'True', 'null': 'True'}),
-            'guid': ('django.db.models.fields.CharField', [], {'max_length': '40'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'label': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
-            'members': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'through': "orm['user_groups.GroupMembership']", 'symmetrical': 'False'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
-            'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'owner': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'user_groups_group_owner'", 'null': 'True', 'to': "orm['auth.User']"}),
-            'owner_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'group_permissions'", 'blank': 'True', 'to': "orm['auth.Permission']"}),
-            'show_as_option': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'slug': ('tendenci.apps.base.fields.SlugField', [], {'unique': 'True', 'max_length': '100', 'db_index': 'True'}),
-            'status': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'status_detail': ('django.db.models.fields.CharField', [], {'default': "'active'", 'max_length': '50'}),
-            'type': ('django.db.models.fields.CharField', [], {'default': "'distribution'", 'max_length': '75', 'blank': 'True'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        },
-        'user_groups.groupmembership': {
-            'Meta': {'unique_together': "(('group', 'member'),)", 'object_name': 'GroupMembership'},
-            'create_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'creator_id': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'creator_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'group': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['user_groups.Group']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'member': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'group_member'", 'to': "orm['auth.User']"}),
-            'owner_id': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'owner_username': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'role': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255', 'blank': 'True'}),
-            'sort_order': ('django.db.models.fields.IntegerField', [], {'default': '0', 'blank': 'True'}),
-            'status': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'status_detail': ('django.db.models.fields.CharField', [], {'default': "'active'", 'max_length': '50'}),
-            'update_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'})
-        }
-    }
-
-    complete_apps = ['studygroups']
+    operations = [
+        migrations.CreateModel(
+            name='Officer',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('phone', models.CharField(max_length=50, null=True, blank=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Position',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=200, verbose_name='title')),
+                ('group', models.ForeignKey(to='user_groups.Group', help_text=b'Group with associated permissions for this officer position.', null=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='StudyGroup',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('allow_anonymous_view', models.BooleanField(default=True, verbose_name='Public can view')),
+                ('allow_user_view', models.BooleanField(default=True, verbose_name='Signed in user can view')),
+                ('allow_member_view', models.BooleanField(default=True)),
+                ('allow_user_edit', models.BooleanField(default=False, verbose_name='Signed in user can change')),
+                ('allow_member_edit', models.BooleanField(default=False)),
+                ('create_dt', models.DateTimeField(auto_now_add=True, verbose_name='Created On')),
+                ('update_dt', models.DateTimeField(auto_now=True, verbose_name='Last Updated')),
+                ('creator_username', models.CharField(max_length=50)),
+                ('owner_username', models.CharField(max_length=50)),
+                ('status', models.BooleanField(default=True, verbose_name=b'Active')),
+                ('status_detail', models.CharField(default=b'active', max_length=50)),
+                ('guid', models.CharField(max_length=40)),
+                ('title', models.CharField(max_length=500, blank=True)),
+                ('slug', tendenci.apps.base.fields.SlugField(max_length=100, verbose_name='URL Path', db_index=True)),
+                ('content', tinymce.models.HTMLField()),
+                ('view_contact_form', models.BooleanField(default=False)),
+                ('design_notes', models.TextField(verbose_name='Design Notes', blank=True)),
+                ('syndicate', models.BooleanField(default=False, verbose_name='Include in RSS feed')),
+                ('template', models.CharField(max_length=50, verbose_name='Template', blank=True)),
+                ('tags', tagging.fields.TagField(max_length=255, blank=True)),
+                ('mission', tinymce.models.HTMLField(null=True, blank=True)),
+                ('notes', tinymce.models.HTMLField(null=True, blank=True)),
+                ('contact_name', models.CharField(max_length=200, null=True, blank=True)),
+                ('contact_email', models.CharField(max_length=200, null=True, blank=True)),
+                ('join_link', models.CharField(max_length=200, null=True, blank=True)),
+                ('creator', models.ForeignKey(related_name='studygroups_studygroup_creator', on_delete=django.db.models.deletion.SET_NULL, default=None, editable=False, to=settings.AUTH_USER_MODEL, null=True)),
+                ('entity', models.ForeignKey(related_name='studygroups_studygroup_entity', on_delete=django.db.models.deletion.SET_NULL, default=None, blank=True, to='entities.Entity', null=True)),
+                ('group', models.ForeignKey(to='user_groups.Group')),
+                ('header_image', models.ForeignKey(to='pages.HeaderImage', null=True)),
+                ('meta', models.OneToOneField(null=True, to='meta.Meta')),
+                ('owner', models.ForeignKey(related_name='studygroups_studygroup_owner', on_delete=django.db.models.deletion.SET_NULL, default=None, to=settings.AUTH_USER_MODEL, null=True)),
+            ],
+            options={
+                'permissions': (('view_studygroup', 'Can view studygroup'),),
+            },
+        ),
+        migrations.AddField(
+            model_name='officer',
+            name='position',
+            field=models.ForeignKey(to='studygroups.Position'),
+        ),
+        migrations.AddField(
+            model_name='officer',
+            name='study_group',
+            field=models.ForeignKey(to='studygroups.StudyGroup'),
+        ),
+        migrations.AddField(
+            model_name='officer',
+            name='user',
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+        ),
+    ]
