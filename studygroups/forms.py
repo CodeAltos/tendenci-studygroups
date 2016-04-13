@@ -3,7 +3,7 @@ from django import forms
 from studygroups.models import StudyGroup, Officer
 from tendenci.apps.user_groups.models import GroupMembership, Group
 from tendenci.core.perms.forms import TendenciBaseForm
-from tinymce.widgets import TinyMCE
+from tendenci.libs.tinymce.widgets import TinyMCE
 from tendenci.core.base.fields import SplitDateTimeField
 from tendenci.core.base.utils import get_template_list
 
