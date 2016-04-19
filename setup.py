@@ -12,7 +12,7 @@ setup(
     name='tendenci-studygroups',
     author='Schipul',
     author_email='programmers@schipul.com',
-    version='1.0.4',
+    version='5.2.0',
     license='GPL3',
     description='Studygroups addon for Tendenci',
     long_description=longdesc,
